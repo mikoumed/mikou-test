@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Hashtags{% endblock %}
+
+{% block content %}
+<ul>
+	{% for hashtag in object_list %}
+	   <li><a href="{% url 'messages_with_hashtag' hash=hashtag.name %}">{{ hashtag.name }}</a></li>
+	{% endfor %}
+</ul>
+
+{% endblock %}

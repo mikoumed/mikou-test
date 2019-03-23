@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Messages with a hashtag{% endblock %}
+
+{% block content %}
+<ul>
+	{%if object_list %}
+		{% for message in object_list %}
+			<li>{{ message.content }}</li>
+		{% endfor %}
+	{% else %}
+			<p>No messages</p>
+	{% endif %}
+
+</ul>
+{% endblock %}

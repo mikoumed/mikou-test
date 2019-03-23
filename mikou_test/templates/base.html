@@ -8,10 +8,11 @@
   <header>
     {% if user.is_authenticated %}
       Hi {{ user.username }}!
-      <a href="{% url 'logout' %}">logout</a>
-      <a href="{% url 'createpost' %}">Create Post</a>
-      <a href="{% url 'last_20_posts' %}">List last 20 posts</a>
-      <a href="{% url 'posts_by_user' %}">All posts by user</a>
+      <a href="{% url 'logout' %}">logout</a>  ||
+      <a href="{% url 'createpost' %}">Create Post</a>  ||
+      <a href="{% url 'last_20_posts' %}">List last 20 posts</a>  ||
+      <a href="{% url 'posts_by_user' %}">All posts by user</a>  ||
+      <a href="{% url 'hashtags_list' %}">Hashtags List</a>
     {% else %}
       <a href="{% url 'login' %}">login</a>
     {% endif %}

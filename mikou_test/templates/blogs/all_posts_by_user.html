@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<ul>
+	{% for user in object_list %}
+	   <li>{{ user }}</li>
+	   <ul>
+		   {% for message in user.message_set.all %}
+		   <li>{{ message.content }}</li>
+		   {% endfor %}
+	   </ul>
+	{% endfor %}
+</ul>
+
+{% endblock %}

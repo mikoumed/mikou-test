@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<ul>
+	{% for message in object_list %}
+	   <li>{{ message }}</li>
+	{% endfor %}
+</ul>
+
+{% endblock %}

@@ -8,6 +8,6 @@ from dateutil.relativedelta import relativedelta
 def delete_old_message():
     start_date = timezone.localtime(timezone.now())
     end_date = start_date + relativedelta(day=10)
-    objects_to_delete = Message.objects.filter(created_at__gt=end_date)
+    objects_to_delete = Message.objects.filter(created_at__lt=end_date)
     objects_to_delete.delete()
     return result

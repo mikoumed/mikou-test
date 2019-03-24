@@ -4,7 +4,7 @@ from .models import Message, HashTag
 
 # Register your models here.
 class MessageClass(admin.ModelAdmin):
-    readonly_fields = ('created_at', )
+    readonly_fields = ('created_at', 'id', )
 
 admin.site.register(Message, MessageClass)
 admin.site.register(HashTag)

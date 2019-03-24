@@ -69,6 +69,7 @@ class ViewMessagesWithHashtag(ListView):
             result = []
             for word in splitted_message:
                 if word[0] == '#':
+                    #use url template tag
                     link = '<a href=' + '"/messages_with_hashtag/(%3FP'+'{}'.format(word[1:])+'%5Cd+)/$">'+word+'</a>'
                     result.append(link)
                 else:

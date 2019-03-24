@@ -48,14 +48,22 @@ class ViewMessagesWithHashtag(ListView):
     template_name = 'blogs/messages_with_a_hashtag.html'
     queryset = HashTag.objects.all()
 
-    def get_queryset(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         hashtag = self.kwargs['hash']
         hashtag_object = HashTag.objects.get(name=hashtag)
-        super(ViewMessagesWithHashtag, self).get_queryset()
         messages = hashtag_object.message.all() #queryset
-        # for message in messages:
-        #     splitted_message = message.content.split()
-        #     print(splitted_message)
-        #     # for word in splitted_message:
-        qs = messages.prefetch_related('hashtag_set')
-        return qs
+        messages_list = []
+        for message in messages:
+            splitted_message = message.content.split()
+            result = []
+            for word in splitted_message:
+                if word[0] == '#':
+                    link = '<a href=' + '"/messages_with_hashtag/(%3FP'+'{}'.format(word[1:])+'%5Cd+)/$">'+word+'</a>'
+                    result.append(link)
+                else:
+                    result.append(word)
+            tweet = ' '.join(result)
+            messages_list.append(tweet)
+        context['messages_list'] = messages_list
+        return context
